@@ -40,13 +40,22 @@ options(scientific=T, digits = 3)
 # options(scipen=9, digits = 3) 
 # ‘scipen’: integer. A penalty to be applied when deciding to print numeric values in fixed or exponential notation.  Positive values bias towards fixed and negative towards scientific notation: fixed notation will be preferred unless it is more than ‘scipen’ digits wider.
 # use scipen=999 to prevent scientific notation at all times
-```{r}
+```{r,results='markup'}
 library(dplyr)
 airlines <- data.frame(read.csv("International_Report_Passengers.csv"))
 str(airlines)
 ```
 
 
+
+```{r,results='markup'}
+
+airlines$carriergroup <- as.factor(airlines$carriergroup)
+airlines$Month <- as.factor(airlines$Month)
+airlines$Year <- as.factor(airlines$Year)
+str(airlines)
+
+```
 
 
 
