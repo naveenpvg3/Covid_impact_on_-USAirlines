@@ -94,9 +94,35 @@ topp_10
 ### Monthly total number of flights.(2015-2020)
 ```{r,results='markup'}
 
-#Number of Flights Monthly 
-
 f_2015 = as.data.frame(table(s_2015$Month))
 names(f_2015)[names(f_2015) == "Var1"] <- "Month"
 names(f_2015)[names(f_2015) == "Freq"] <- "No_of_Flights"
 f_2015
+
+
+f_2016 = as.data.frame(table(s_2016$Month))
+names(f_2016)[names(f_2016) == "Var1"] <- "Month"
+names(f_2016)[names(f_2016) == "Freq"] <- "No_of_Flights"
+f_2016
+
+f_2017 = as.data.frame(table(s_2017$Month))
+names(f_2017)[names(f_2017) == "Var1"] <- "Month"
+names(f_2017)[names(f_2017) == "Freq"] <- "No_of_Flights"
+f_2017
+
+f_2018 = as.data.frame(table(s_2018$Month))
+names(f_2018)[names(f_2018) == "Var1"] <- "Month"
+names(f_2018)[names(f_2018) == "Freq"] <- "No_of_Flightss"
+f_2018
+
+f_2019 = as.data.frame(table(s_2019$Month))
+names(f_2019)[names(f_2019) == "Var1"] <- "Month"
+names(f_2019)[names(f_2019) == "Freq"] <- "No_of_Flights"
+f_2019
+
+f_2020 = as.data.frame(table(s_2020$Month))
+names(f_2020)[names(f_2020) == "Var1"] <- "Month"
+names(f_2020)[names(f_2020) == "Freq"] <- "No_of_Flights"
+f_2020
+
+```
