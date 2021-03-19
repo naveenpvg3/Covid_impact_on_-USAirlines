@@ -288,9 +288,17 @@ ggplot(data = airlines) +
 
 ##We can also compute these values manually with dplyr::count()
 
-
-
 airlines %>%
   count(carriergroup)
   
- ```
+  ##Q-Q Plot
+##qqnorm(): produces a normal QQ plot of the variable
+##qqline(): adds a reference line
+
+qqnorm(Monthly_Flight_Data, pch = 1, frame = TRUE)
+qqline(Monthly_Flight_Data, col = "steelblue", lwd = 2)
+
+##Boxplot 
+boxplot(Monthly_Flight_Data, main="Boxplot for monthly flight data", xlab="No. of flights", ylab="Total", col = "Blue")
+```
+  
