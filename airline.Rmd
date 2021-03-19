@@ -252,3 +252,18 @@ p12 <- ggplot(data=p_2020, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="id
 
 grid.arrange(p7, p8, p9, p10, p11, p12, ncol = 3, nrow = 2)
 ```
+```{r,results='markup'}
+Monthly_Passenger_Data <- c(p_2015$Total_Passengers, p_2016$Total_Passengers, p_2017$Total_Passengers, p_2018$Total_Passengers, p_2019$Total_Passengers, p_2020$Total_Passengers)
+summary(Monthly_Passenger_Data)
+cat("\n")
+
+Monthly_Flight_Data <- c(f_2015$No_of_Flights, f_2016$No_of_Flights, f_2017$No_of_Flights, f_2018$No_of_Flights, f_2019$No_of_Flights, f_2020$No_of_Flights)
+# Monthly_Flight_Data
+summary(Monthly_Flight_Data)
+cat("\n")
+
+# Standard Deviation
+sd(Monthly_Passenger_Data)
+sd(Monthly_Flight_Data)
+
+```
