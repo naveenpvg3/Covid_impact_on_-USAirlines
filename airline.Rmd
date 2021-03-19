@@ -126,3 +126,20 @@ names(f_2020)[names(f_2020) == "Freq"] <- "No_of_Flights"
 f_2020
 
 ```
+
+
+```{r,results='markup'}
+
+# Histogram showing monthly flights for each year
+
+hist(s_2015$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2015", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+hist(s_2016$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2016", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+hist(s_2017$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2017", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+hist(s_2018$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2018", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+hist(s_2019$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2019", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+hist(s_2020$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2020", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
