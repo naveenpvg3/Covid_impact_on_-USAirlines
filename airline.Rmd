@@ -1,3 +1,4 @@
+
 ---
 title: "Intro DS R Markdown"
 author: ""
@@ -165,4 +166,258 @@ p6 <- ggplot(s_2020, aes(x=Month)) + geom_histogram(color="black", fill="green",
 grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 3, nrow = 2)
 
 
+```
+=======
+---
+title: "Intro DS R Markdown"
+author: ""
+date: "today"
+# date: "`r Sys.Date()`"
+output:
+  html_document:
+    code_folding: hide
+    number_sections: false
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+{r basic, include = F}
+# use this function to conveniently load libraries and work smoothly with knitting
+# can add quietly=T option to the require() function
+# the loadPkg function essentially replaced/substituted two functions install.packages() and library() in one step.
+loadPkg = function(x) { if (!require(x,character.only=T, quietly =T)) { install.packages(x,dep=T,repos="http://cran.us.r-project.org"); if(!require(x,character.only=T)) stop("Package not found") } }
+
+# unload/detact package when done using it
+unloadPkg = function(pkg, character.only = FALSE) { 
+  if(!character.only) { pkg <- as.character(substitute(pkg)) } 
+  search_item <- paste("package", pkg,sep = ":") 
+  while(search_item %in% search()) { detach(search_item, unload = TRUE, character.only = TRUE) } 
+}
+
+
+{r setup, include=FALSE}
+# some of common options (and the defaults) are: 
+# include=T, eval=T, echo=T, results='hide'/'asis'/'markup',..., collapse=F, warning=T, message=T, error=T, cache=T, fig.width=6, fig.height=4, fig.dim=c(6,4) #inches, fig.align='left'/'center','right', 
+# knitr::opts_chunk$set(warning = F, results = "markup", message = F)
+knitr::opts_chunk$set(warning = F, results = "hide", message = F)
+# knitr::opts_chunk$set(include = F)
+# knitr::opts_chunk$set(echo = TRUE)
+options(scientific=T, digits = 3) 
+# options(scipen=9, digits = 3) 
+# ‘scipen’: integer. A penalty to be applied when deciding to print numeric values in fixed or exponential notation.  Positive values bias towards fixed and negative towards scientific notation: fixed notation will be preferred unless it is more than ‘scipen’ digits wider.
+# use scipen=999 to prevent scientific notation at all times
+```{r,results='markup'}
+library(dplyr)
+airlines <- data.frame(read.csv("International_Report_Passengers.csv"))
+str(airlines)
+```
+
+
+
+```{r,results='markup'}
+
+airlines$carriergroup <- as.factor(airlines$carriergroup)
+airlines$Year <- as.factor(airlines$Year)
+str(airlines)
+
+```
+
+
+### Dividing the data yearwise
+```{r, results='markup'}
+s_2015 <- subset(airlines,Year == 2015)
+
+s_2016 <- subset(airlines,Year == 2016)
+
+s_2017 <- subset(airlines,Year == 2017)
+
+s_2018 <- subset(airlines,Year == 2018)
+
+s_2019 <- subset(airlines,Year == 2019)
+
+s_2020 <- subset(airlines,Year == 2020)
+```
+
+
+
+### Top 10 busiest airports in the U.S.
+
+```{r,results='markup'}
+
+#Top 10 busy airports 
+
+library(dplyr)
+
+topp_10 <- airlines %>%
+	group_by(US_Gateway_AirportCode) %>%
+	summarise(Total_Passengers = sum(Total)) %>%
+	arrange(desc(Total_Passengers)) %>%
+  	top_n(10)
+topp_10
+
+```
+
+### Monthly total number of flights.(2015-2020)
+```{r,results='markup'}
+
+f_2015 = as.data.frame(table(s_2015$Month))
+names(f_2015)[names(f_2015) == "Var1"] <- "Month"
+names(f_2015)[names(f_2015) == "Freq"] <- "No_of_Flights"
+f_2015
+
+
+f_2016 = as.data.frame(table(s_2016$Month))
+names(f_2016)[names(f_2016) == "Var1"] <- "Month"
+names(f_2016)[names(f_2016) == "Freq"] <- "No_of_Flights"
+f_2016
+
+f_2017 = as.data.frame(table(s_2017$Month))
+names(f_2017)[names(f_2017) == "Var1"] <- "Month"
+names(f_2017)[names(f_2017) == "Freq"] <- "No_of_Flights"
+f_2017
+
+f_2018 = as.data.frame(table(s_2018$Month))
+names(f_2018)[names(f_2018) == "Var1"] <- "Month"
+names(f_2018)[names(f_2018) == "Freq"] <- "No_of_Flightss"
+f_2018
+
+f_2019 = as.data.frame(table(s_2019$Month))
+names(f_2019)[names(f_2019) == "Var1"] <- "Month"
+names(f_2019)[names(f_2019) == "Freq"] <- "No_of_Flights"
+f_2019
+
+f_2020 = as.data.frame(table(s_2020$Month))
+names(f_2020)[names(f_2020) == "Var1"] <- "Month"
+names(f_2020)[names(f_2020) == "Freq"] <- "No_of_Flights"
+f_2020
+
+```
+
+
+```{r,results='markup'}
+
+# Histogram showing monthly flights for each year
+
+#hist(s_2015$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2015", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+#hist(s_2016$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2016", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+#hist(s_2017$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2017", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+#hist(s_2018$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2018", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+#hist(s_2019$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2019", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+#hist(s_2020$Month,col = "green", freq = TRUE, main = "Histogram plot showing Monthly Flights for 2020", xlab = "Months",ylab = "Flights",breaks=rep(1:12,each=2)+c(-.4,.4))
+
+```
+
+```{r,results='markup'}
+
+#install.packages("gridExtra")         
+library("gridExtra") 
+library(ggplot2)
+
+p1 <- ggplot(s_2015, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2015")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p2 <- ggplot(s_2016, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2016")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p3 <- ggplot(s_2017, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2017")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p4 <- ggplot(s_2018, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2018")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p5 <- ggplot(s_2019, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2019")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p6 <- ggplot(s_2020, aes(x=Month)) + geom_histogram(color="black", fill="green", binwidth = 0.5)+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2020")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 3, nrow = 2)
+
+
+```
+
+```{r,results='markup'}
+
+#Number of Passengers Monthly
+
+p_2015 <- s_2015 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2015
+
+p_2016 <- s_2016 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2016
+
+p_2017 <- s_2017 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2017
+
+p_2018 <- s_2018 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2018
+
+p_2019 <- s_2019 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2019
+
+p_2020 <- s_2020 %>%
+	group_by(Month) %>%
+	summarise(Total_Passengers = sum(Total))
+p_2020
+
+```
+
+```{r,results='markup'}
+
+# Barplots showing Monthly total passengers for each year
+
+#barplot(p_2015$Total_Passengers,names.arg=p_2015$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2015",border="red")
+
+
+#barplot(p_2016$Total_Passengers,names.arg=p_2016$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2016",border="red")
+
+
+#barplot(p_2017$Total_Passengers,names.arg=p_2017$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2017",border="red")
+
+
+#barplot(p_2018$Total_Passengers,names.arg=p_2018$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2018",border="red")
+
+
+#barplot(p_2019$Total_Passengers,names.arg=p_2019$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2019",border="red")
+
+
+#barplot(p_2020$Total_Passengers,names.arg=p_2020$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2020",border="red")
+
+
+
+```
+
+
+```{r,results='markup'}
+
+# Barplots showing Monthly total passengers for each year
+install.packages("gridExtra")               # Install gridExtra package
+library("gridExtra")
+
+p7 <- ggplot(data=p_2015, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2015")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p8 <- ggplot(data=p_2016, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2016")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p9 <- ggplot(data=p_2017, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2017")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p10 <- ggplot(data=p_2018, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2018")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p11 <- ggplot(data=p_2019, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2019")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p12 <- ggplot(data=p_2020, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2020")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+grid.arrange(p7, p8, p9, p10, p11, p12, ncol = 3, nrow = 2)
 ```
