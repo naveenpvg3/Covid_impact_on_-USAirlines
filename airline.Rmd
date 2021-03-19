@@ -57,4 +57,37 @@ str(airlines)
 ```
 
 
+### Dividing the data yearwise
+```{r, results='markup'}
+s_2015 <- subset(airlines,Year == 2015)
+
+s_2016 <- subset(airlines,Year == 2016)
+
+s_2017 <- subset(airlines,Year == 2017)
+
+s_2018 <- subset(airlines,Year == 2018)
+
+s_2019 <- subset(airlines,Year == 2019)
+
+s_2020 <- subset(airlines,Year == 2020)
+```
+
+
+
+### Top 10 busiest airports in the U.S.
+
+```{r,results='markup'}
+
+#Top 10 busy airports 
+
+library(dplyr)
+
+topp_10 <- airlines %>%
+	group_by(US_Gateway_AirportCode) %>%
+	summarise(Total_Passengers = sum(Total)) %>%
+  top_n(10)
+   
+topp_10
+
+```
 
