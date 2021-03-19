@@ -204,3 +204,28 @@ p_2020 <- s_2020 %>%
 p_2020
 
 ```
+
+```{r,results='markup'}
+
+# Barplots showing Monthly total passengers for each year
+
+barplot(p_2015$Total_Passengers,names.arg=p_2015$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2015",border="red")
+
+
+barplot(p_2016$Total_Passengers,names.arg=p_2016$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2016",border="red")
+
+
+barplot(p_2017$Total_Passengers,names.arg=p_2017$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2017",border="red")
+
+
+barplot(p_2018$Total_Passengers,names.arg=p_2018$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2018",border="red")
+
+
+barplot(p_2019$Total_Passengers,names.arg=p_2019$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2019",border="red")
+
+
+barplot(p_2020$Total_Passengers,names.arg=p_2020$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2020",border="red")
+
+
+
+```
