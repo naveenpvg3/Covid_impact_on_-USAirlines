@@ -252,6 +252,9 @@ p12 <- ggplot(data=p_2020, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="id
 
 grid.arrange(p7, p8, p9, p10, p11, p12, ncol = 3, nrow = 2)
 ```
+
+
+### Exploratory Data Analysis
 ```{r,results='markup'}
 Monthly_Passenger_Data <- c(p_2015$Total_Passengers, p_2016$Total_Passengers, p_2017$Total_Passengers, p_2018$Total_Passengers, p_2019$Total_Passengers, p_2020$Total_Passengers)
 summary(Monthly_Passenger_Data)
@@ -267,3 +270,24 @@ sd(Monthly_Passenger_Data)
 sd(Monthly_Flight_Data)
 
 ```
+```{r,results='markup'}
+##EDA :
+
+##Examining the distribution of a categorical variables from the dataset.
+##The height of the bar displays how many observations occurred with each x value.
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+
+ggplot(data = airlines) +
+  geom_bar(mapping = aes(x = carriergroup))
+
+##We can also compute these values manually with dplyr::count()
+
+
+
+airlines %>%
+  count(carriergroup)
+  
+ ```
