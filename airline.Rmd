@@ -209,23 +209,46 @@ p_2020
 
 # Barplots showing Monthly total passengers for each year
 
-barplot(p_2015$Total_Passengers,names.arg=p_2015$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2015",border="red")
+#barplot(p_2015$Total_Passengers,names.arg=p_2015$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2015",border="red")
 
 
-barplot(p_2016$Total_Passengers,names.arg=p_2016$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2016",border="red")
+#barplot(p_2016$Total_Passengers,names.arg=p_2016$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2016",border="red")
 
 
-barplot(p_2017$Total_Passengers,names.arg=p_2017$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2017",border="red")
+#barplot(p_2017$Total_Passengers,names.arg=p_2017$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2017",border="red")
 
 
-barplot(p_2018$Total_Passengers,names.arg=p_2018$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2018",border="red")
+#barplot(p_2018$Total_Passengers,names.arg=p_2018$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2018",border="red")
 
 
-barplot(p_2019$Total_Passengers,names.arg=p_2019$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2019",border="red")
+#barplot(p_2019$Total_Passengers,names.arg=p_2019$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2019",border="red")
 
 
-barplot(p_2020$Total_Passengers,names.arg=p_2020$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2020",border="red")
+#barplot(p_2020$Total_Passengers,names.arg=p_2020$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2020",border="red")
 
 
 
+```
+
+
+```{r,results='markup'}
+
+# Barplots showing Monthly total passengers for each year
+install.packages("gridExtra")               # Install gridExtra package
+library("gridExtra")
+
+p7 <- ggplot(data=p_2015, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2015")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p8 <- ggplot(data=p_2016, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2016")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p9 <- ggplot(data=p_2017, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2017")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p10 <- ggplot(data=p_2018, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2018")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p11 <- ggplot(data=p_2019, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2019")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+p12 <- ggplot(data=p_2020, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="identity", fill="steelblue")+ scale_x_continuous(breaks = seq(0, 12, 1))+labs(title = "Histogram plot showing \n Monthly Flights for 2020")+ theme(plot.title = element_text(size = 10, face = "bold"))
+
+grid.arrange(p7, p8, p9, p10, p11, p12, ncol = 3, nrow = 2)
+```
 ```
