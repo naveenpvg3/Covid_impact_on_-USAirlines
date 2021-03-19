@@ -91,3 +91,12 @@ topp_10
 
 ```
 
+### Monthly total number of flights.(2015-2020)
+```{r,results='markup'}
+
+#Number of Flights Monthly 
+
+f_2015 = as.data.frame(table(s_2015$Month))
+names(f_2015)[names(f_2015) == "Var1"] <- "Month"
+names(f_2015)[names(f_2015) == "Freq"] <- "No_of_Flights"
+f_2015
