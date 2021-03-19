@@ -51,7 +51,6 @@ str(airlines)
 ```{r,results='markup'}
 
 airlines$carriergroup <- as.factor(airlines$carriergroup)
-airlines$Month <- as.factor(airlines$Month)
 airlines$Year <- as.factor(airlines$Year)
 str(airlines)
 
