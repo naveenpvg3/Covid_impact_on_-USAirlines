@@ -85,8 +85,8 @@ library(dplyr)
 topp_10 <- airlines %>%
 	group_by(US_Gateway_AirportCode) %>%
 	summarise(Total_Passengers = sum(Total)) %>%
-  top_n(10)
-   
+	arrange(desc(Total_Passengers)) %>%
+  	top_n(10)
 topp_10
 
 ```
