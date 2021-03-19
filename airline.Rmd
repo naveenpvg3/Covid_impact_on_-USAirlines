@@ -148,7 +148,7 @@ f_2020
 
 ```{r,results='markup'}
 
-#install.packages("gridExtra")               # Install gridExtra package
+#install.packages("gridExtra")         
 library("gridExtra") 
 library(ggplot2)
 
