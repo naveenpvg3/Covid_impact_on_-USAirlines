@@ -299,7 +299,13 @@ qqnorm(Monthly_Flight_Data, pch = 1, frame = TRUE)
 qqline(Monthly_Flight_Data, col = "steelblue", lwd = 2)
 
 ##Boxplot 
-boxplot(Monthly_Flight_Data, main="Boxplot for monthly flight data", xlab="No. of flights", ylab="Total", col = "Blue")
+#boxplot(Monthly_Flight_Data, main="Boxplot for monthly flight data", xlab="No. of flights", ylab="Total", col = "Blue")
+
+Monthly_Flight <- data.frame(Monthly_Flight_Data)
+Monthly_Flight %>%
+  ggplot(aes(Monthly_Flight_Data)) +
+  geom_boxplot(fill="#0000FF") + 
+  ggtitle("Boxplot for monthly flight data") +coord_flip()
 ```
 ```{r,results='markup'}
 # Impact of COVID-19 on total passengers data
