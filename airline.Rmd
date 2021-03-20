@@ -326,3 +326,34 @@ plot(x_axis, y3 ,type = "b", col = "green", axes = FALSE, xlab = "Year", ylab = 
 par(new = TRUE)
 plot(x_axis, y4 ,type = "b", col = "black", axes = FALSE, xlab = "Year", ylab = "Total Passengers", ylim=c(8500000,22000000))
 legend("topleft",legend=c("January", "February", "March", "Average"), col=c("red", "blue", "green", "black"), lty=1:1, cex=0.8)
+
+
+
+```{r}
+
+# Impact of COVID-19 on total flights data 
+
+# Total flights for the month of January for all the years
+y5 = c(f_2015$No_of_Flights[1], f_2016$No_of_Flights[1], f_2017$No_of_Flights[1], f_2018$No_of_Flights[1], f_2019$No_of_Flights[1], f_2020$No_of_Flights[1])
+
+# Total flights for the month of February for all the years
+y6 = c(f_2015$No_of_Flights[2], f_2016$No_of_Flights[2], f_2017$No_of_Flights[2], f_2018$No_of_Flights[2], f_2019$No_of_Flights[2], f_2020$No_of_Flights[2])
+
+# Total flights for the month of March for all the years
+y7 = c(f_2015$No_of_Flights[3], f_2016$No_of_Flights[3], f_2017$No_of_Flights[3], f_2018$No_of_Flights[3], f_2019$No_of_Flights[3], f_2020$No_of_Flights[3])
+
+# Total flights averaged across all the months for all the years
+y8 = c(mean(f_2015$No_of_Flights), mean(f_2016$No_of_Flights), mean(f_2017$No_of_Flights), mean(f_2018$No_of_Flights), mean(f_2019$No_of_Flights), mean(f_2020$No_of_Flights))
+
+
+plot(x_axis, y5 , main="Yearly Variation in number of flights", type = "b", col = "red", xlab = "Year", ylab = "Total Flights", ylim=c(2150,2700))
+par(new = TRUE)
+plot(x_axis, y6 ,type = "b", col = "blue", axes = FALSE, xlab = "Year", ylab = "Total Flights", ylim=c(2150,2700))
+par(new = TRUE)
+plot(x_axis, y7 ,type = "b", col = "green", axes = FALSE, xlab = "Year", ylab = "Total Flights", ylim=c(2150,2700))
+par(new = TRUE)
+plot(x_axis, y8 ,type = "b", col = "black", axes = FALSE, xlab = "Year", ylab = "Total Flights", ylim=c(2150,2700))
+legend("topleft",legend=c("January", "February", "March", "Average"), col=c("red", "blue", "green", "black"), lty=1:1, cex=0.8)
+
+```
+
