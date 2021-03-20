@@ -301,4 +301,20 @@ qqline(Monthly_Flight_Data, col = "steelblue", lwd = 2)
 ##Boxplot 
 boxplot(Monthly_Flight_Data, main="Boxplot for monthly flight data", xlab="No. of flights", ylab="Total", col = "Blue")
 ```
+```{r,results='markup'}
+# Impact of COVID-19 on total passengers data
+
+x_axis = 2015:2020
+
+# Total passengers for the month of January for all the years
+y1 <- c(p_2015$Total_Passengers[1], p_2016$Total_Passengers[1], p_2017$Total_Passengers[1], p_2018$Total_Passengers[1], p_2019$Total_Passengers[1], p_2020$Total_Passengers[1])
+
+# Total passengers for the month of February for all the years
+y2 <- c(p_2015$Total_Passengers[2], p_2016$Total_Passengers[2], p_2017$Total_Passengers[2], p_2018$Total_Passengers[2], p_2019$Total_Passengers[2], p_2020$Total_Passengers[2])
+
+# Total passengers for the month of March for all the years
+y3 <- c(p_2015$Total_Passengers[3], p_2016$Total_Passengers[3], p_2017$Total_Passengers[3], p_2018$Total_Passengers[3], p_2019$Total_Passengers[3], p_2020$Total_Passengers[3])
+
+# Total passengers averaged across all the months for all the years
+y4 <- c(mean(p_2015[["Total_Passengers"]]), mean(p_2016[["Total_Passengers"]]), mean(p_2017[["Total_Passengers"]]), mean(p_2018[["Total_Passengers"]]), mean(p_2019[["Total_Passengers"]]), mean(p_2020[["Total_Passengers"]]))
   
