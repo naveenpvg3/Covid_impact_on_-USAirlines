@@ -318,3 +318,11 @@ y3 <- c(p_2015$Total_Passengers[3], p_2016$Total_Passengers[3], p_2017$Total_Pas
 # Total passengers averaged across all the months for all the years
 y4 <- c(mean(p_2015[["Total_Passengers"]]), mean(p_2016[["Total_Passengers"]]), mean(p_2017[["Total_Passengers"]]), mean(p_2018[["Total_Passengers"]]), mean(p_2019[["Total_Passengers"]]), mean(p_2020[["Total_Passengers"]]))
   
+plot(x_axis, y1 , main="Yearly Variation in number of passengers", type = "b", col = "red", xlab = "Year", ylab = "Total Passengers", ylim=c(8500000,22000000))
+par(new = TRUE)
+plot(x_axis, y2 ,type = "b", col = "blue", axes = FALSE, xlab = "Year", ylab = "Total Passengers", ylim=c(8500000,22000000))
+par(new = TRUE)
+plot(x_axis, y3 ,type = "b", col = "green", axes = FALSE, xlab = "Year", ylab = "Total Passengers", ylim=c(8500000,22000000))
+par(new = TRUE)
+plot(x_axis, y4 ,type = "b", col = "black", axes = FALSE, xlab = "Year", ylab = "Total Passengers", ylim=c(8500000,22000000))
+legend("topleft",legend=c("January", "February", "March", "Average"), col=c("red", "blue", "green", "black"), lty=1:1, cex=0.8)
