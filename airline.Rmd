@@ -396,3 +396,23 @@ avg_year %>%
   geom_line()+
   geom_point()+ scale_y_continuous(labels=fancy_scientific) 
 ```
+```{r,results='markup'}
+increase15_16 = (mean(p_2016$Total_Passengers)-mean(p_2015$Total_Passengers))/mean(p_2015$Total_Passengers)*100
+increase16_17 = (mean(p_2017$Total_Passengers)-mean(p_2016$Total_Passengers))/mean(p_2016$Total_Passengers)*100
+increase17_18 = (mean(p_2018$Total_Passengers)-mean(p_2017$Total_Passengers))/mean(p_2017$Total_Passengers)*100
+increase18_19 = (mean(p_2019$Total_Passengers)-mean(p_2018$Total_Passengers))/mean(p_2018$Total_Passengers)*100
+increase19_20 = (mean(p_2020$Total_Passengers)-mean(p_2019$Total_Passengers))/mean(p_2019$Total_Passengers)*100
+
+percent_increase = c(increase15_16, increase16_17, increase17_18, increase18_19, increase19_20)
+year_range = c(2016, 2017, 2018, 2019, 2020 )
+#percent_increase
+#plot(year_range, percent_increase, type = 'b')
+
+per <- data.frame(year_range, percent_increase)
+per
+per %>%
+  ggplot(aes(year_range, percent_increase, colour = year_range,group=1)) + 
+  ggtitle("Plot displaying percentage change of passengers 2015-2020") +
+  geom_line()+
+  geom_point()
+```
