@@ -416,3 +416,27 @@ per %>%
   geom_line()+
   geom_point()
 ```
+```{r,results='markup'}
+avg_flights <- airlines %>%
+  group_by(Year) %>%
+  summarise(Total_flights = sum(Month))
+avg_flights
+
+avg_flights %>% 
+  ggplot(aes(Year, Total_flights, colour = Year,group=1)) + 
+  ggtitle("Plot displaying Total-Flights 2015-2020") +
+  geom_line()+
+  geom_point()
+
+
+yearly_total_flights = c(sum(f_2015$No_of_Flights), sum(f_2016$No_of_Flights), sum(f_2017$No_of_Flights), sum(f_2018$No_of_Flights), sum(f_2019$No_of_Flights), sum(f_2020$No_of_Flights) )
+
+
+totalFlights_year<- data.frame(year, yearly_total_flights)
+totalFlights_year
+totalFlights_year %>% 
+  ggplot(aes(year, yearly_total_flights, colour = year,group=1)) + 
+  ggtitle("Plot displaying yearly total of flights 2015-2020") +
+  geom_line()+
+  geom_point()+ scale_y_continuous(labels=fancy_scientific) 
+```
