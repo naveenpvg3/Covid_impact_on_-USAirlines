@@ -411,4 +411,27 @@ increase19_20 = (mean(p_2020$Total_Passengers)-mean(p_2019$Total_Passengers))/me
 
 percent_increase = c(increase15_16, increase16_17, increase17_18, increase18_19, increase19_20)
 year_range = c(2016, 2017, 2018, 2019, 2020 )
+
+per <- data.frame(year_range, percent_increase)
+per
+per %>%
+  ggplot(aes(year_range, percent_increase, colour = year_range,group=1)) + 
+  ggtitle("Plot displaying percentage change of passengers 2015-2020") +
+  geom_line()+
+  geom_point()
+
+
+#Average of Monthly flights by year
+
+Monthly_mean_flights_year = c(mean(f_2015$No_of_Flights), mean(f_2016$No_of_Flights), mean(f_2017$No_of_Flights), mean(f_2018$No_of_Flights), mean(f_2019$No_of_Flights), mean(f_2020$No_of_Flights) )
+
+
+avg_year_fl<- data.frame(year, Monthly_mean_flights_year)
+avg_year_fl
+avg_year %>% 
+  ggplot(aes(year, Monthly_mean_flights_year, colour = year,group=1)) + 
+  ggtitle("Plot displaying Monthly Average flights from 2015-2020") +
+  geom_line()+
+  geom_point()+ scale_y_continuous(labels=fancy_scientific) 
+
 ```
