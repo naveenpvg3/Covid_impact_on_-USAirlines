@@ -385,24 +385,24 @@ fancy_scientific <- function(l) {
      parse(text=l)
 }
 
-
-Monthly_Mean_By_Year = c(mean(p_2015$Total_Passengers), mean(p_2016$Total_Passengers), mean(p_2017$Total_Passengers), mean(p_2018$Total_Passengers), mean(p_2019$Total_Passengers), mean(p_2020$Total_Passengers))
-
-#Monthly_Mean_By_Year
 year = c(2015, 2016, 2017, 2018, 2019, 2020)
 
-#plot(year, Monthly_Mean_By_Year, type = 'b')
+#Average of Monthly passengers by year
+
+Monthly_Mean_By_Year = c(mean(p_2015$Total_Passengers), mean(p_2016$Total_Passengers), mean(p_2017$Total_Passengers), mean(p_2018$Total_Passengers), mean(p_2019$Total_Passengers), mean(p_2020$Total_Passengers))
 
 
 avg_year<- data.frame(year, Monthly_Mean_By_Year)
 avg_year
 avg_year %>% 
   ggplot(aes(year, Monthly_Mean_By_Year, colour = year,group=1)) + 
-  ggtitle("Plot displaying Average Passengers 2015-2020") +
+  ggtitle("Plot displaying Monthly Average Passengers from 2015-2020") +
   geom_line()+
   geom_point()+ scale_y_continuous(labels=fancy_scientific) 
-```
-```{r,results='markup'}
+
+
+#Percent change in the above data
+
 increase15_16 = (mean(p_2016$Total_Passengers)-mean(p_2015$Total_Passengers))/mean(p_2015$Total_Passengers)*100
 increase16_17 = (mean(p_2017$Total_Passengers)-mean(p_2016$Total_Passengers))/mean(p_2016$Total_Passengers)*100
 increase17_18 = (mean(p_2018$Total_Passengers)-mean(p_2017$Total_Passengers))/mean(p_2017$Total_Passengers)*100
@@ -411,38 +411,4 @@ increase19_20 = (mean(p_2020$Total_Passengers)-mean(p_2019$Total_Passengers))/me
 
 percent_increase = c(increase15_16, increase16_17, increase17_18, increase18_19, increase19_20)
 year_range = c(2016, 2017, 2018, 2019, 2020 )
-#percent_increase
-#plot(year_range, percent_increase, type = 'b')
-
-per <- data.frame(year_range, percent_increase)
-per
-per %>%
-  ggplot(aes(year_range, percent_increase, colour = year_range,group=1)) + 
-  ggtitle("Plot displaying percentage change of passengers 2015-2020") +
-  geom_line()+
-  geom_point()
-```
-```{r,results='markup'}
-avg_flights <- airlines %>%
-  group_by(Year) %>%
-  summarise(Total_flights = sum(Month))
-avg_flights
-
-avg_flights %>% 
-  ggplot(aes(Year, Total_flights, colour = Year,group=1)) + 
-  ggtitle("Plot displaying Total-Flights 2015-2020") +
-  geom_line()+
-  geom_point()
-
-
-yearly_total_flights = c(sum(f_2015$No_of_Flights), sum(f_2016$No_of_Flights), sum(f_2017$No_of_Flights), sum(f_2018$No_of_Flights), sum(f_2019$No_of_Flights), sum(f_2020$No_of_Flights) )
-
-
-totalFlights_year<- data.frame(year, yearly_total_flights)
-totalFlights_year
-totalFlights_year %>% 
-  ggplot(aes(year, yearly_total_flights, colour = year,group=1)) + 
-  ggtitle("Plot displaying yearly total of flights 2015-2020") +
-  geom_line()+
-  geom_point()+ scale_y_continuous(labels=fancy_scientific) 
 ```
