@@ -1,7 +1,7 @@
 
 ---
 title: "U.S Airline Statistics Report"
-author: "DSTeam1"
+author: "DS-Team1"
 date: "today"
 # date: "`r Sys.Date()`"
 output:
@@ -42,13 +42,12 @@ options(scientific=T, digits = 3)
 # ‘scipen’: integer. A penalty to be applied when deciding to print numeric values in fixed or exponential notation.  Positive values bias towards fixed and negative towards scientific notation: fixed notation will be preferred unless it is more than ‘scipen’ digits wider.
 # use scipen=999 to prevent scientific notation at all times
 ```
-Our team project focuses on the current situation of airlines during the COVID-19 pandemic. We would like to explore, analyze and visualize the current situation with the dataset from the year 2015 to 2020. This enables us to analyze the data before and after COVID. The dataset taken is "US International Air Passengers and Freight Statistics Report",from source kaggle. We have cleaned that dataset by deleted some unnecessary variables and filtering the year from 2015-2020. The resultant dataset contains over 154894 observations. The two important variables in this dataset we have performed the analysis on are the total passengers and total flights. 
+Our team project focuses on the current situation of airlines during the COVID-19 pandemic. We would like to explore, analyze and visualize the current situation with the dataset from the year 2015 to 2020. This enables us to analyze the data before and after COVID. The dataset taken is "US International Air Passengers and Freight Statistics Report",from source kaggle. We have cleaned that dataset by deleting some unnecessary variables and filtering the year from 2015-2020. The resultant dataset contains over 154894 observations. The two important variables in this dataset we have performed the analysis on are the total passengers and total flights. 
 
-
-
-We start by using the Dendrochronology Program Library(dplr) and then  load our passenger dataset and create a dataframe called **airlines**.
-We then run a couple of statistical functions like str(), summary() get the details of the statistical description, variables, datatype,length, etc.
 ### Importing Data
+
+We start by using the dendrochronology program library(dplr) and then  load our passenger dataset and create a dataframe called **airlines**.
+We then run a couple of statistical functions like str(), summary() to get the details of the statistical description, variables, datatype,length, etc.
 
 ```{r,results='markup'}
 library(dplyr)
@@ -100,10 +99,9 @@ topp_10 <- airlines %>%
 topp_10
 
 ```
-We can note that JFK stands first in being the busiest airport in the US among all. LAX and MIA have nearly the same values.
+We can note that JFK stands first in being the busiest airport in the US among all. LAX and MIA have nearly the same values. With the help of such dataset, we can get a quick view on which airport currently the bussiest.
 
 ### SMART question 2: Monthly total number of flights (2015-2020)
-
 The next smart question discusses the number of flights that travel per month in a year.
 
 ```{r,results='markup'}
@@ -236,8 +234,6 @@ p_2020
 
 
 #barplot(p_2020$Total_Passengers,names.arg=p_2020$Month,xlab="Month",ylab="Total_Passenger",col="blue",main="Monthly passengers for 2020",border="red")
-
-
 
 ```
 
@@ -511,7 +507,7 @@ Tot_flights = 82.0 + (9.28e-05)*Total_Pass
 
 ### Conclusion
 
--In this project, we analyzed a dataset containing daily flights and passenger’s data for various airlines. Our analysis started with us combining the dates into their respective months and dividing the data year wise from 2015 to 2020. 
+-In this project, we analyzed a dataset containing daily flights and passengers data for various airlines. Our analysis started with us combining the dates into their respective months and dividing the data year wise from 2015 to 2020. 
 
 -Next step was to form separate databases for monthly total of passengers and flights and running analyses on them. Our first tangible and publishable result was finding top ten busiest airports. 
 
@@ -523,6 +519,6 @@ Tot_flights = 82.0 + (9.28e-05)*Total_Pass
 
 -We formed a linear regression model between total enplaned passengers and total number of departures after performing a correlation test on them. 
 
--Our final task was to predict the total number of flights an airport would need, to accommodate an increased number of passengers. This prediction would greatly help the airports to manage and allocate their resources post COVID. The regression model we formed helped us do the same. 
+-Our final task was to predict the total number of flights an airport would need, to accommodate an increased number of passengers. This prediction would greatly help the airports to manage and allocate their resources post COVID-19. The regression model we formed helped us do the same. 
 
--Thus, we finished our analysis of the dataset with useful conclusions and results.
+-Thus, we finished our analysis of this dataset with useful conclusions and results.
