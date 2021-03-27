@@ -44,6 +44,10 @@ options(scientific=T, digits = 3)
 ```
 Our team project focuses on the current situation of airlines during the COVID-19 pandemic. We would like to explore, analyze and visualize the current situation with the dataset from the year 2015 to 2020. This enables us to analyze the data before and after COVID. The dataset taken is "US International Air Passengers and Freight Statistics Report",from source kaggle. We have cleaned that dataset by deleted some unnecessary variables and filtering the year from 2015-2020. The resultant dataset contains over 154894 observations. The two important variables in this dataset we have performed the analysis on are the total passengers and total flights. 
 
+
+
+We start by using the Dendrochronology Program Library(dplr) and then  load our passenger dataset and create a dataframe called **airlines**.
+We then run a couple of statistical functions like str(), summary() get the details of the statistical description, variables, datatype,length, etc.
 ### Importing Data
 
 ```{r,results='markup'}
@@ -51,7 +55,7 @@ library(dplyr)
 airlines <- data.frame(read.csv("International_Report_Passengers.csv"))
 str(airlines)
 ```
-
+Once we have analyzed the data, we check on the missing values and if the variables are categorical or numeric. We decide to convert the variables **carriergroup** and **year** to factor for better statistical modeling.
 
 ### Cleaning the data
 ```{r,results='markup'}
@@ -61,7 +65,7 @@ airlines$Year <- as.factor(airlines$Year)
 str(airlines)
 
 ```
-
+Since we are using data from 2015 to 2020, we subset it year wise to s_2015, s_2016, etc. for better and easier usage.
 
 ### Dividing the data yearwise
 ```{r, results='markup'}
@@ -79,8 +83,8 @@ s_2020 <- subset(airlines,Year == 2020)
 ```
 
 
-
 ### SMART question 1: Top 10 busiest airports in the U.S.
+The first smart question helps us understand that we can find the top 10 airports having the highest number of passengers. 
 
 ```{r,results='markup'}
 
