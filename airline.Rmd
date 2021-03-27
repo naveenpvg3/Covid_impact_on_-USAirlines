@@ -401,6 +401,10 @@ legend("topleft",legend=c("January", "February", "March", "Average"), col=c("red
 From the plots, we can observe that the yearly variation in flights for all the years from 2015 to 2019 follow similar trends. It is followed by a sudden drop in 2020. This comparison is done only for months Jan to March as we had data for only those months for 2020. We have also plotted a monthly average for all those years.
 
 ### SMART question 4: Post pandemic expectations and predictions
+The future of airlines post COVID might be dull initially.
+
+The US airlines business post COVID-19 is expected to increase gradually.
+This conclusion is made from the following analysis.
 
 ```{r,results='markup'}
 #Post Covid
@@ -435,8 +439,12 @@ avg_year %>%
   ggtitle("Plot displaying Monthly Average Passengers from 2015-2020") +
   geom_line()+
   geom_point()+ scale_y_continuous(labels=fancy_scientific) 
+```
 
 
+We observe from this ggplot, the monthly average number of passengers have increased gradually every year from 2015 to 2019. As soon as the pandemic hit, it dropped suddenly in 2020. So when the COVID pandemic ends and things starts getting normal we can expect restoration of airlines to follow the same pattern as we saw every year before COVID.
+
+```{r, results='markup'}
 #Percent change in the above data
 
 increase15_16 = (mean(p_2016$Total_Passengers)-mean(p_2015$Total_Passengers))/mean(p_2015$Total_Passengers)*100
@@ -455,8 +463,12 @@ per %>%
   ggtitle("Plot displaying percentage change of passengers 2015-2020") +
   geom_line()+
   geom_point()
+```
+In the second plot, we can observe the percentage change. Seeing this graph we might assume it’s decreasing but we need to keep in mind these are percentage change.
 
+We can see in the table there's a percent increase (2015-2016,2016-2017,2017-2018,2018-2019,2019-2020). The yearly percent increase in the total passengers varies between 1% to 6.5%. So, post COVID the percent increase can be expected to be in the same range.
 
+```{r, results = 'markup'}
 #Average of Monthly flights by year
 
 Monthly_mean_flights_year = c(mean(f_2015$No_of_Flights), mean(f_2016$No_of_Flights), mean(f_2017$No_of_Flights), mean(f_2018$No_of_Flights), mean(f_2019$No_of_Flights), mean(f_2020$No_of_Flights) )
@@ -471,6 +483,12 @@ avg_year %>%
   geom_point()+ scale_y_continuous(labels=fancy_scientific) 
 
 ```
+
+In the third plot, 
+the line graph is plotted for monthly average flights from 2015-2020. We see a steady increase in average number of flights from 2015-2018. At the end of 2019 and early 2020 when pandemic started the average number flights reduced.
+
+Once the lockdown and travel ban have been lifted completely, there would be more mobility of passengers and high scope for people traveling. This would also lead to an increase in the number of flights.
+
 ### Predicting number of flights required to accommodate higher number of passengers post COVID
 
 Flights and passengers data is grouped according to the airport.
