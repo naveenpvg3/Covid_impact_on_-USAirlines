@@ -55,7 +55,7 @@ library(dplyr)
 airlines <- data.frame(read.csv("International_Report_Passengers.csv"))
 str(airlines)
 ```
-Once we have analyzed the data, we check on the missing values and if the variables are categorical or numeric. We decide to convert the variables **carriergroup** and **year** to factor for better statistical modeling.
+Once we have analyzed the data, we check on the missing values and if the variables are categorical or numeric. We decide to convert the variables **carriergroup** and **Year** to factor for better statistical modeling.
 
 ### Cleaning the data
 ```{r,results='markup'}
@@ -100,8 +100,12 @@ topp_10 <- airlines %>%
 topp_10
 
 ```
+We can note that JFK stands first in being the busiest airport in the US among all. LAX and MIA have nearly the same values.
 
 ### SMART question 2: Monthly total number of flights (2015-2020)
+
+The next smart question discusses the number of flights that travel per month in a year.
+
 ```{r,results='markup'}
 
 f_2015 = as.data.frame(table(s_2015$Month))
@@ -136,6 +140,7 @@ names(f_2020)[names(f_2020) == "Freq"] <- "No_of_Flights"
 f_2020
 
 ```
+We can see that the minimum number of flights take off monthly every year from 2015-2020 is 2000. However, in the year 2020, only 3 months of data is recorded. This is due to the lockdown and travel ban that had been imposed over the airlines to and from the United States due the start of pandemic.
 
 ### Histogram showing monthly flights for each year
 ```{r,results='markup'}
@@ -176,6 +181,8 @@ grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 3, nrow = 2)
 
 
 ```
+A histogram is a bar graph like representation of data that buckets a range of outcomes into columns along with x-axis. The y-axis represents the number of counts or percentage of occurrence in the data for each column and can be used to visualize data distributions. The histogram here shows the monthly flights data from the year 2015 to 2020. For the year 2015 we can see that the month of December has the highest number of flights which is approximately equal to 2450. Similarly, we can check the data from the years 2016 to 2020.
+
 ### Monthly total Number of passengers (2015-2020)
 ```{r,results='markup'}
 
