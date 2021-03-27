@@ -80,10 +80,13 @@ s_2019 <- subset(airlines,Year == 2019)
 
 s_2020 <- subset(airlines,Year == 2020)
 ```
+SMART Questions:
+
+We have framed four smart questions to get a specific idea and to understand our dataset better. 
 
 
 ### SMART question 1: Top 10 busiest airports in the U.S.
-The first smart question helps us understand that we can find the top 10 airports having the highest number of passengers. 
+The first smart question helps us fin the top 10 airports having the highest number of passengers. 
 
 ```{r,results='markup'}
 
@@ -101,8 +104,9 @@ topp_10
 ```
 We can note that JFK stands first in being the busiest airport in the US among all. LAX and MIA have nearly the same values. With the help of such dataset, we can get a quick view on which airport currently the bussiest.
 
-### SMART question 2: Monthly total number of flights (2015-2020)
 The next smart question discusses the number of flights that travel per month in a year.
+
+### SMART question 2: Monthly total number of flights (2015-2020)
 
 ```{r,results='markup'}
 
