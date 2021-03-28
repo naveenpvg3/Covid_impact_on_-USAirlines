@@ -219,6 +219,8 @@ p_2020 <- s_2020 %>%
 p_2020
 
 ```
+Here, we found the total monthly passengers flying each year by grouping the month data with the sum of total passengers. 
+
 ### Barplots showing Monthly total passengers for each year
 ```{r,results='markup'}
 
@@ -262,7 +264,7 @@ p12 <- ggplot(data=p_2020, aes(x=Month, y=Total_Passengers)) + geom_bar(stat="id
 
 grid.arrange(p7, p8, p9, p10, p11, p12, ncol = 3, nrow = 2)
 ```
-
+A barchart represents data in rectangular bars with length of the bar proportional to the value of variable. In R, we can draw both vertical and horizontal bars. Here, from the barplot it displays the data of monthly total passengers from the year 2015 to 2020. We can see year wise data and conclude that the month of July carries the highest number of passengers in 2015. We can draw similar conclusions for other years as well from the barcarts. 
 
 ### Exploratory Data Analysis
 ```{r,results='markup'}
@@ -301,6 +303,8 @@ airlines %>%
   count(carriergroup)
 ```
 
+Carriergroup = 1 represents domestic flights and 0 represents foreign flights.
+
 ```{r,results='markup'}  
 
 ##Q-Q Plot
@@ -310,6 +314,9 @@ airlines %>%
 qqnorm(Monthly_Flight_Data, pch = 1, frame = TRUE)
 qqline(Monthly_Flight_Data, col = "steelblue", lwd = 2)
 ```
+
+The Q-Q Plot or a Quantile - Quantile plot is a graphical tool to help us assess of a set of data came from some theoretical distribution such as Normal or Exponential. A Q-Q plot is a scatterplot created by plotting two sets of quantiles against each other. If both sets of quantiles came from the same distribution, we should see the points forming a line that's roughly straight. Here, from the Q-Q plot we can see that half of the data lies below 0 and half of the data lies above 0. By the reference line we can establish that the data is normally distributed.
+
 
 ```{r,results='markup'}
 
@@ -322,6 +329,9 @@ Monthly_Flight %>%
   geom_boxplot(fill="#0000FF") + 
   ggtitle("Boxplot for monthly flight data") +coord_flip()
 ```
+The Boxplot is also called as Box and Whiskers plots. These are an efficient way of representing the spread of the data graphically. The boxplot has three quantiles which are the 1st, 2nd and 3rd quantiles. The Inter Quantile Range(IQR) can be found by the difference of the first and the third quantile. The vertical and dotted which represents whiskers which is 1.5*IQR of the data. The outliers are extremely important. Here, from the boxplot the first quantile is approximately equals to 2351 and the second quantile is equals to 2583. 
+
+
 ### SMART question 3.1: Impact of COVID-19 on total passengers data
 
 ```{r,results='markup'}
