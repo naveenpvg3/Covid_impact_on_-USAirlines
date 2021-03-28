@@ -16,7 +16,7 @@ output:
     toc_depth: '3'
 ---
 
-{r basic, include = F}
+```{r basic, include = F}
 # use this function to conveniently load libraries and work smoothly with knitting
 # can add quietly=T option to the require() function
 # the loadPkg function essentially replaced/substituted two functions install.packages() and library() in one step.
@@ -28,7 +28,7 @@ unloadPkg = function(pkg, character.only = FALSE) {
   search_item <- paste("package", pkg,sep = ":") 
   while(search_item %in% search()) { detach(search_item, unload = TRUE, character.only = TRUE) } 
 }
-
+```
 
 ```{r setup, include=FALSE}
 # some of common options (and the defaults) are: 
@@ -64,7 +64,7 @@ airlines$Year <- as.factor(airlines$Year)
 str(airlines)
 
 ```
-Since we are using data from 2015 to 2020, we subset it year wise to s_2015, s_2016, etc. for better and easier usage.
+
 
 ### Dividing the data yearwise
 ```{r, results='markup'}
@@ -80,13 +80,13 @@ s_2019 <- subset(airlines,Year == 2019)
 
 s_2020 <- subset(airlines,Year == 2020)
 ```
-SMART Questions:
+Since we are using data from 2015 to 2020, we subset it year wise to s_2015, s_2016, etc. for better and easier usage.
 
 We have framed four smart questions to get a specific idea and to understand our dataset better. 
 
+The first smart question helps us fin the top 10 airports having the highest number of passengers.
 
 ### SMART question 1: Top 10 busiest airports in the U.S.
-The first smart question helps us fin the top 10 airports having the highest number of passengers. 
 
 ```{r,results='markup'}
 
@@ -183,9 +183,12 @@ grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 3, nrow = 2)
 
 
 ```
-A histogram is a bar graph like representation of data that buckets a range of outcomes into columns along with x-axis. The y-axis represents the number of counts or percentage of occurrence in the data for each column and can be used to visualize data distributions. The histogram here shows the monthly flights data from the year 2015 to 2020. For the year 2015 we can see that the month of December has the highest number of flights which is approximately equal to 2450. Similarly, we can check the data from the years 2016 to 2020.
+A histogram is a bar graph like representation of data that buckets a range of outcomes into columns along the x-axis. The y-axis represents the number of counts or percentage of occurrence in the data for each column and can be used to visualize data distributions. The histogram here shows the monthly flights data from the year 2015 to 2020. For the year 2015 we can see that the month of December has the highest number of flights which is approximately equal to 2450. Similarly, we can check the data from the years 2016 to 2020.
 
 ### Monthly total Number of passengers (2015-2020)
+
+Here, we found the total monthly passengers flying each year by grouping the month data with the sum of total passengers. 
+
 ```{r,results='markup'}
 
 p_2015 <- s_2015 %>%
@@ -219,7 +222,7 @@ p_2020 <- s_2020 %>%
 p_2020
 
 ```
-Here, we found the total monthly passengers flying each year by grouping the month data with the sum of total passengers. 
+
 
 ### Barplots showing Monthly total passengers for each year
 ```{r,results='markup'}
@@ -315,7 +318,7 @@ qqnorm(Monthly_Flight_Data, pch = 1, frame = TRUE)
 qqline(Monthly_Flight_Data, col = "steelblue", lwd = 2)
 ```
 
-The Q-Q Plot or a Quantile - Quantile plot is a graphical tool to help us assess of a set of data came from some theoretical distribution such as Normal or Exponential. A Q-Q plot is a scatterplot created by plotting two sets of quantiles against each other. If both sets of quantiles came from the same distribution, we should see the points forming a line that's roughly straight. Here, from the Q-Q plot we can see that half of the data lies below 0 and half of the data lies above 0. By the reference line we can establish that the data is normally distributed.
+The Q-Q Plot or a Quantile - Quantile plot is a graphical tool to help us assess a set of data came from some theoretical distribution such as Normal or Exponential. A Q-Q plot is a scatterplot created by plotting two sets of quantiles against each other. If both sets of quantiles came from the same distribution, we should see the points forming a line that's roughly straight. Here, from the Q-Q plot we can see that half of the data lies below 0 and half of the data lies above 0. By the reference line we can establish that the data is normally distributed.
 
 
 ```{r,results='markup'}
@@ -494,8 +497,7 @@ avg_year %>%
 
 ```
 
-In the third plot, 
-the line graph is plotted for monthly average flights from 2015-2020. We see a steady increase in average number of flights from 2015-2018. At the end of 2019 and early 2020 when pandemic started the average number flights reduced.
+In the third plot, the line graph is plotted for monthly average flights from 2015-2020. We see a steady increase in average number of flights from 2015-2018. At the end of 2019 and early 2020 when pandemic started, the average number flights reduced.
 
 Once the lockdown and travel ban have been lifted completely, there would be more mobility of passengers and high scope for people traveling. This would also lead to an increase in the number of flights.
 
@@ -554,3 +556,7 @@ Tot_flights = 82.0 + (9.28e-05)*Total_Pass
 -Our final task was to predict the total number of flights an airport would need, to accommodate an increased number of passengers. This prediction would greatly help the airports to manage and allocate their resources post COVID-19. The regression model we formed helped us do the same. 
 
 -Thus, we finished our analysis of this dataset with useful conclusions and results.
+
+### References
+
+U.S.International Air Traffic data(1990-2020): Airport and airline Traffic by US and International Carriers.(2021). International_Report_Passengers.[Data file]. Retrieved from https://www.kaggle.com/parulpandey/us-international-air-traffic-data
