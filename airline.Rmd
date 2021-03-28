@@ -84,7 +84,7 @@ Since we are using data from 2015 to 2020, we subset it year wise to s_2015, s_2
 
 We have framed four smart questions to get a specific idea and to understand our dataset better. 
 
-The first smart question helps us fin the top 10 airports having the highest number of passengers.
+The first smart question helps us find the top 10 airports having the highest number of passengers.
 
 ### SMART question 1: Top 10 busiest airports in the U.S.
 
